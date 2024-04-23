@@ -23,9 +23,11 @@
 ### 缩放点积注意力
 
 $Attention$ 的本质是 $softmax(XX^T)X$ 。
+
 $$
 Attention(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}})V
 $$
+
 $d_k$ 是 $W^K$ 的维度（论文里是64）， $\frac1{\sqrt{d_k}}$ 本质 是用来做一个 scale （缩放），使点积的方差变为 1 。
 
 ### 多头注意力
@@ -59,6 +61,7 @@ $$
 ### FFN
 
   接在每一层的 Attention 之后，由两个线性变换组成，中间是 ReLU 激活函数，可以视为两个大小为 1 的卷积核，就是用来增大模型复杂度的。
+
 $$
 FFN(x)=max(0,xW_1+b_1)W_2+b_2
 $$
@@ -66,6 +69,7 @@ $$
 ### Layer Normalization
 
 目的是将数据标准化到 ReLU 激活函数的作用区域。
+
 $$
 LN(x_i)=\alpha\frac{x_i-\mu_i}{\sqrt{\sigma^2+\xi}}+\beta
 $$
@@ -75,6 +79,7 @@ $$
 ### Positional Encoding
 
 位于 embedding 后，block 之前，是 Transformer 的特有机制，直接叠加在 embedding 上。
+
 $$
 PE_{(pos,2i)}=sin(pos/10000^{2i/d_{model}})\\
 PE_{(pos,2i+1)}=cos(pos/10000^{2i/d_{model}})
