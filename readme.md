@@ -35,9 +35,11 @@ MultiHead(Q, K, V)=Concat(head_1, ..., head_h)W^O
 $$
 
 其中：
+
 $$
 head_i=Attention(QW_i^Q, KW_i^K, VW_i^V)
 $$
+
 这几个头的设定是在不同的子空间内，也就是把 $d_k$ 分为 $h$ 段，每段的关注点不同，以适应不同语境。
 
 ### 自注意力
